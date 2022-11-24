@@ -6,7 +6,7 @@ import {
   ApolloQueryResult,
   SubscriptionOptions,
   MutationOptions,
-  FetchResult,
+  MutationOptions,
   DocumentNode
 } from '@apollo/client/core';
 import { Observable, empty } from 'rxjs';
@@ -92,7 +92,7 @@ export class JssGraphQLService {
   /**
    * Executes a GraphQL mutation (write) against the GraphQL endpoint
    */
-  mutate<T, V = EmptyObject>(options: MutationOptions<T, V> & JssGraphQLOptions): Observable<FetchResult<T>> {
+  mutate<T, V = EmptyObject>(options: MutationOptions<T, V> & JssGraphQLOptions): Observable<MutationOptions<T>> {
     if (this.isEditingOrPreviewingAndSsr) {
       return empty();
     }
